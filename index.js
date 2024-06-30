@@ -1,43 +1,16 @@
-function quickSort(arr) {
-  if (arr.length < 2) {
-    return arr;
+class Worker{
+  
+  constructor(name, surname, rate, days ) {
+      this.name = name;
+      this.surname = surname;
+      this.rate = rate;
+      this.days = days;
   }
-  let pivot = arr[arr.length - 1];
-  let left = [];
-  let right = [];
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (arr[i] < pivot) {
-      left.push(arr[i]);
-    } else {
-      right.push(arr[i]);
-    }
+
+  getSalary(){
+    return this.rate * this.days;
   }
-  return [...quickSort(left), pivot, ...quickSort(right)];
 }
 
-function oneDim(arr) {
-  let res = [];
-  for (let i = 0; i < arr.length; i++) {
-    arr[i].forEach((el) => {
-      console.log(el);
-      res.push(el);
-    });
-  }
-  return res;
-}
-
-const inputArr = [
-  [1, 4, 5],
-  [1, 3, 4],
-  [2, 6],
-];
-
-// first solution
-let oneDimArr = oneDim(inputArr);
-
-console.log(oneDimArr);
-console.log(quickSort(oneDimArr));
-
-// second solution
-let oneDimArr2 = [].concat(...inputArr).sort();
-console.log(oneDimArr2);
+let worker = new Worker("Tom", "Smith", 10, 31);
+console.log(worker.getSalary());
